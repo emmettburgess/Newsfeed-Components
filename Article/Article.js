@@ -26,4 +26,26 @@ class Article {
 
 */
 
-let articles;
+class Article {
+  constructor(article) {
+    this.article = article;
+    this.articleButtons = this.article.querySelector(".expandButton");
+    this.articleBtnOpen = this.article.querySelector(".article-open");
+    this.articleBtnClose = this.article.querySelector(".close");
+    this.articleContent = this.article.querySelector(".article");
+
+    this.articleButtons.addEventListener("click", () => this.toggleArticle());
+  }
+  toggleArticle() {
+    this.articleBtnOpen.classList.toggle(".article-open");
+    this.articleBtnClose.classList.toggle(".close");
+    this.articleContent.classList.toggle(".article");
+  }
+};
+
+let articles = document.querySelectorAll(".article");
+
+articles.forEach(function(article){
+  return new Article(article);
+});
+
